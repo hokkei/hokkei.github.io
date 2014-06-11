@@ -3,6 +3,7 @@ function Connection(ip,port){
 	this.port = port;
 	this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
 	this.newConnection = function(){
+		this.socket.close();
 		this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
 	}
 	this.socket.onmessage = function(m){
