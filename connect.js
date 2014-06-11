@@ -2,13 +2,30 @@ function Connection(ip,port){
 	this.ip = ip || 'localhost';
 	this.port = port;
 	this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
-	this.newConnection = function(){
-		this.socket.close();
+	this.refresh = function(){
+		this.socket.send(getIP()+" left for connection refresh");
 		this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
 	}
 	this.socket.onmessage = function(m){
-		console.log(m.data);
+		//console.log(m.data);
 	}
+}
+
+function getIP() {
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
 }
 
 var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
