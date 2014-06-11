@@ -1,9 +1,12 @@
+var myIP = getIP();
+//to fix instances in which there is not enough time to make the `XMLHttpRequest`
+
 function Connection(ip,port){
 	this.ip = ip || 'localhost';
 	this.port = port;
 	this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
 	this.refresh = function(){
-		this.socket.send(getIP()+" left for connection refresh");
+		this.socket.send(myIP+" left for connection refresh");
 		this.socket = new WebSocket('ws://' + this.ip + ':' + this.port);
 	}
 	this.socket.onmessage = function(m){
@@ -11,7 +14,7 @@ function Connection(ip,port){
 	}
 }
 
-function getIP() {
+function getIP(){
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
@@ -20,9 +23,9 @@ function getIP() {
 
     hostipInfo = xmlhttp.responseText.split("\n");
 
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    for (i=0; hostipInfo.length>=i; i++){
+        ipAddress = hostipInfo[i].split(": ");
+        if(ipAddress[0] === "IP") return ipAddress[1];
     }
 
     return false;
