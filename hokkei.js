@@ -1,4 +1,4 @@
-var myIP = getIP();
+//var myIP = getIP();
 // to minimize reloading/closing time
 
 function Connection(ip,port){
@@ -6,7 +6,7 @@ function Connection(ip,port){
 	this.port = port;
 	this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	this.refresh = function(){
-		this.socket.send(myIP+" left for connection refresh");
+		//this.socket.send(myIP+" left for connection refresh");
 		this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	}
 	this.socket.onmessage = function(m){
