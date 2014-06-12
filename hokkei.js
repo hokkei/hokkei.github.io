@@ -4,10 +4,10 @@ var myIP = getIP();
 function Connection(ip,port){
 	this.ip = ip || "localhost";
 	this.port = port;
-	this.socket = new WebSocket("wss://" + this.ip + ":" + this.port);
+	this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	this.refresh = function(){
 		this.socket.send(myIP+" left for connection refresh");
-		this.socket = new WebSocket("wss://" + this.ip + ":" + this.port);
+		this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	}
 	this.socket.onmessage = function(m){
 		//console.log(m.data);
