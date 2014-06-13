@@ -9,8 +9,8 @@ function Connection(ip,port){
 		//this.socket.send(myIP+" left for connection refresh");
 		this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	}
-	this.socket.onmessage = function(m){
-		//console.log(m.data);
+	this.socket.onopen = function(){
+		this.socket.send("joined "document.title);
 	}
 }
 
