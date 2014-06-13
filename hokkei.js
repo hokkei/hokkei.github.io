@@ -1,10 +1,6 @@
 //var myIP = getIP();
 // to minimize reloading/closing time
 
-window.onload = function(){
-	if(location.protocol==="http:") location.protocol = "https:";	
-}
-
 function Connection(ip,port){
 	this.ip = ip || "localhost";
 	this.port = port;
