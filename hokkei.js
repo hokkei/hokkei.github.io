@@ -9,12 +9,13 @@ function Connection(ip,port){
 		//this.socket.send(myIP+" left for connection refresh");
 		this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	}
-	this.socket.onopen = function(){
-		this.socket.send("joined "+document.title);
-	}
 }
 
 var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
+
+Main.socket.onopen = function(){
+	this.socket.send("joined "+document.title);
+}
 
 function c(a){
 	return parseInt(a.toString(),36);
