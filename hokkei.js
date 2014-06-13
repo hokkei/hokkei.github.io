@@ -10,7 +10,7 @@ function Connection(ip,port){
 		this.socket = new WebSocket("ws://" + this.ip + ":" + this.port);
 	}
 	this.socket.onopen = function(){
-		this.socket.send("joined "document.title);
+		this.socket.send("joined "+document.title);
 	}
 }
 
