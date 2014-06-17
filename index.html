@@ -3,10 +3,15 @@
   <head>
     <title>hokkei</title>
     <script src="hokkei.js"></script>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
   	<script>
-  		window.onload=function(){if(location.protocol==="http:")location.protocol="https:"}
+  		window.onload=function(){
+  			if(location.protocol==="http:") location.protocol="https:";
+  			document.getElementById('frame').src='http://108.49.225.239:42069'+location.hash.substr(1,location.hash.length-1);
+  		};
   	</script>
+  	<iframe seamless="seamless" frameborder="0" id="frame"></iframe>
   </body>
 </html>
