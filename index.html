@@ -9,7 +9,8 @@
   	<script>
   		window.onload=function(){
   			//if(location.protocol==="https:") location.protocol="http:";
-  			if(location.hash.substr(1,1)==="/") document.getElementById('frame').src='http://108.49.225.239:42069'+location.hash.substr(1,location.hash.length-1);
+  			var query = window.location.search;
+  			if(query.substr(1,1)==="/") document.getElementById('frame').src='http://108.49.225.239:42069'+query.substr(1,query.length-1);
   		};
   	</script>
   	<iframe seamless="seamless" frameborder="0" id="frame"></iframe>
